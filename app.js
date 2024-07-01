@@ -4,6 +4,7 @@ const cors = require("cors")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const { usermodel } = require("./models/user")
+const {foodmodel} =require("./model/Add")
 
 const app = express()
 app.use(cors())
@@ -56,6 +57,14 @@ app.post("/signin", (req, res)=>{
             }
         }
     )
+})
+
+app.post("/add", (req,res)=>{
+    let input=req.body
+    let food=new foodmodel(input)
+    food.save()
+    console.log(food)
+    res.json({"status":"success"})
 })
 
 app.listen(8088,()=>{
