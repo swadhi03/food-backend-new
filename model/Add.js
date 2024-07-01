@@ -7,5 +7,5 @@ const schema=mongoose.Schema(
         "image":{type:String,required:true}
     })
 
-    let usermodel=mongoose.model("users",schema);
-    module.exports={usermodel}
+    let foodmodel=mongoose.model("foods",schema);
+    module.exports={foodmodel}
