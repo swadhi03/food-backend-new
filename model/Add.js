@@ -9,3 +9,4 @@ const schema=mongoose.Schema(
 
     let foodmodel=mongoose.model("foods",schema);
     module.exports={foodmodel}
+    
