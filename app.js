@@ -59,6 +59,22 @@ app.post("/signin", (req, res) => {
     )
 })
 
+app.post("/viewuser", (req, res) => {
+    let token = req.headers["token"]
+    jwt.verify(token, "food-app", (error, decoded) => {
+        if (error) {
+            res.json({ "status": "unauthorized access" })
+        } else {
+            if (decoded) {
+                usermodel.find().then(
+                    (response) => {
+                        res.json(response)
+                    }
+                ).catch()
+            }
+        }
+    })
+})
 
 app.post("/add", (req, res) => {
     let input = req.body
