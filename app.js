@@ -88,7 +88,16 @@ app.post("/foodview",(req,res)=>{
         }
     )
     })
-    
+    app.post("/cart",(req,res)=>{
+        foodmodel.find().then((data)=>{
+            res.json(data)
+        }).catch(
+            (error)=>{
+                res.json(error)
+            }
+        )
+        })
+        
 
 app.listen(8088,()=>{
     console.log("Server Started")
