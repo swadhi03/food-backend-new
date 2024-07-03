@@ -4,7 +4,8 @@ const schema = mongoose.Schema(
         "cardnum":{type:String,required:true},
         "cvv":{type:String,required:true},
         "dob":{type:String,required:true},
-        "name":{type:String,required:true}
+        "name":{type:String,required:true},
+        "price":{type:String,required:true}
         }
 )
 
