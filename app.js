@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const { usermodel } = require("./models/user")
 const { foodmodel } = require("./model/Add")
+const { paymodel } = require("./models/payment")
 
 const app = express()
 app.use(cors())
@@ -57,6 +58,17 @@ app.post("/signin", (req, res) => {
             }
         }
     )
+})
+
+app.post("/payment", async(req,res)=>{
+let input = req.body
+    let hashedPassword = await generateHashedPassword(input.cardnum)
+    console.log(hashedPassword)
+    input.cardnum = hashedPassword
+    let pay = new paymodel(input)
+    pay.save()
+    console.log(pay)
+    res.json({ "status": "success" })
 })
 
 
